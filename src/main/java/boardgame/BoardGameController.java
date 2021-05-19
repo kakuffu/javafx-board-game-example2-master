@@ -1,9 +1,12 @@
 package boardgame;
 
+import java.io.IOException;
+
 import javafx.application.Platform;
-import javafx.beans.Observable;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.ObjectBinding;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,14 +21,12 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.control.TextField;
-
-import boardgame.model.BoardGameModel;
-import boardgame.model.Square;
+import javafx.event.ActionEvent;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.io.IOException;
+import boardgame.model.BoardGameModel;
+import org.tinylog.Logger;
 
 public class BoardGameController {
 
@@ -49,7 +50,17 @@ public class BoardGameController {
     @FXML
     private TextField numberOfTailsField;
 
+    @FXML
+    private TextField playerName1;
+
+    @FXML
+    private TextField playerName2;
+
+    private StringProperty name1 = new SimpleStringProperty();
+    private StringProperty name2 = new SimpleStringProperty();
+
     private BoardGameModel model = new BoardGameModel();
+
 
     @FXML
     private void initialize() {
@@ -66,6 +77,19 @@ public class BoardGameController {
                     System.out.printf("%s's turn!\n", newPlayer);
                 }
         );
+        Logger.info("name = {}", name1);
+        Logger.info("name = {}", name2);
+        playerName1.textProperty().bind(Bindings.concat("Hello, ", name1));
+        playerName2.textProperty().bind(Bindings.concat("Hello, ", name2));
+    }
+    public void setName1 (String name1){
+            Logger.info("Setting Player 1 name to {}", name1);
+            this.name1.set(name1);
+        }
+
+    public void setName2 (String name2){
+        Logger.info("Setting Player 1 name to {}", name2);
+        this.name2.set(name2);
     }
 
     private void handleGameOver(ObservableValue observableValue, boolean oldValue, boolean newValue) {
