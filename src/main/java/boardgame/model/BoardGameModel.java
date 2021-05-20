@@ -88,6 +88,7 @@ public class BoardGameModel {
             numberOfTails.set(numberOfTails.get() + change);
         }
         currentPlayer.set(currentPlayer.get().next());
+
     }
 
     public String toString() {

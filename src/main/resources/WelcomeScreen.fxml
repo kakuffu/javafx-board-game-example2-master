@@ -5,9 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-            prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="boardgame.WelcomeScreenController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boardgame.WelcomeScreenController">
    <top>
       <Label alignment="CENTER" text="Coin Game Designed by Kamal Huseynzade" textAlignment="CENTER" BorderPane.alignment="CENTER">
          <font>
@@ -35,6 +33,7 @@
                   <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                </padding>
             </Label>
+            <Label fx:id="errorLabel" layoutX="219.0" layoutY="200.0" prefHeight="16.0" prefWidth="169.0" textAlignment="CENTER" textFill="RED" />
             <HBox alignment="CENTER">
                <children>
                   <Label alignment="CENTER" text="Player 1">
@@ -113,7 +112,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="exit" mnemonicParsing="false" onAction="#handleExit" prefWidth="100.0" text="Exit" textAlignment="CENTER">
+            <Button fx:id="exitButton" mnemonicParsing="false" onAction="#handleExit" prefWidth="100.0" text="Exit" textAlignment="CENTER">
                <font>
                   <Font name="DejaVu Sans Mono Bold" size="15.0" />
                </font>

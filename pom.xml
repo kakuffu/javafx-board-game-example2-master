@@ -22,7 +22,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
         <maven.compiler.release>16</maven.compiler.release>
-        <exec.mainClass>remove.me.RemoveThisClass</exec.mainClass>
+        <exec.mainClass></exec.mainClass>
         <javafx.version>16</javafx.version>
         <junit.jupiter.version>5.7.1</junit.jupiter.version>
         <jacoco.version>0.8.7</jacoco.version>
@@ -57,6 +57,18 @@
             <groupId>org.tinylog</groupId>
             <artifactId>tinylog-api</artifactId>
             <version>2.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.200</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.4.31.Final</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
     <build>

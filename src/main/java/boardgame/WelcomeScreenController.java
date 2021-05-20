@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -23,6 +24,9 @@ public class WelcomeScreenController {
     private TextField enteredName2;
 
     @FXML
+    private Label errorLabel;
+
+    @FXML
     private void initialize() {
         enteredName1.setText(System.getProperty("user1.name"));
         enteredName2.setText(System.getProperty("user2.name"));
@@ -30,15 +34,21 @@ public class WelcomeScreenController {
 
     @FXML
     private void switchScene(ActionEvent event) throws IOException {
-        Logger.info("Names entered: {}", enteredName1.getText(), enteredName2.getText());
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ui.fxml"));
-        Parent root = fxmlLoader.load();
-        BoardGameController controller = fxmlLoader.<BoardGameController>getController();
-        controller.setName1(enteredName1.getText());
-        controller.setName2(enteredName2.getText());
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(root));
-        stage.show();
+        if (enteredName1.getText().isEmpty()) {
+            errorLabel.setText("Please enter your names!");
+        } else if (enteredName2.getText().isEmpty()) {
+            errorLabel.setText("Please enter your names!");
+        } else {
+            Logger.info("Names entered: {}", enteredName1.getText(), enteredName2.getText());
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ui.fxml"));
+            Parent root = fxmlLoader.load();
+            BoardGameController controller = fxmlLoader.<BoardGameController>getController();
+            controller.setName1(enteredName1.getText());
+            controller.setName2(enteredName2.getText());
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        }
     }
 
     @FXML
@@ -46,5 +56,5 @@ public class WelcomeScreenController {
         System.out.println("Exiting...");
         Platform.exit();
     }
-
 }
+

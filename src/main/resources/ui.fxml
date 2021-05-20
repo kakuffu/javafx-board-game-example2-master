@@ -8,7 +8,7 @@
    <children>
       <HBox alignment="CENTER" spacing="5.0">
          <children>
-            <VBox>
+            <VBox alignment="CENTER">
                <children>
                   <HBox alignment="CENTER_LEFT">
                      <children>
@@ -31,7 +31,7 @@
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField fx:id="playerName2">
+                        <TextField fx:id="playerName2" editable="false">
                            <HBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </HBox.margin>
@@ -40,18 +40,28 @@
                   </HBox>
                </children>
             </VBox>
-            <HBox alignment="CENTER">
+            <VBox alignment="CENTER">
                <children>
-                  <Label alignment="CENTER" text="Number Of Tails">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin></Label>
-                  <TextField fx:id="numberOfTailsField" editable="false" prefColumnCount="5">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin></TextField>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Label alignment="CENTER" text="Number Of Tails">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="numberOfTailsField" alignment="CENTER" editable="false" prefColumnCount="5">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <Button fx:id="endTurnButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleTurn" text="End Turn" textFill="#028320" />
                </children>
-            </HBox>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </VBox>
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -82,13 +92,13 @@
       </GridPane>
       <HBox alignment="CENTER" spacing="20.0">
          <children>
-            <Button fx:id="back" mnemonicParsing="false" onAction="#switchScene" prefWidth="100.0" text="Back">
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#switchScene" prefWidth="100.0" text="Back">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </Button>
             <Button fx:id="highScoreBoard" mnemonicParsing="false" text="High Score Board" />
-            <Button fx:id="exit" mnemonicParsing="false" onAction="#handleExit" prefWidth="100.0" text="Exit Game">
+            <Button fx:id="exitButton" mnemonicParsing="false" onAction="#handleExit" prefWidth="100.0" text="Exit Game">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>

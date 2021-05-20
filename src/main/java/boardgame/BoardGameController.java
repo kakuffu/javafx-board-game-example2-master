@@ -22,7 +22,6 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import boardgame.model.BoardGameModel;
@@ -36,6 +35,7 @@ public class BoardGameController {
         Parent root = FXMLLoader.load(getClass().getResource("/WelcomeScreen.fxml"));
         stage.setScene(new Scene(root));
         stage.show();
+
     }
 
     @FXML
@@ -71,6 +71,7 @@ public class BoardGameController {
             }
         }
         numberOfTailsField.textProperty().bind(model.numberOfTailsProperty().asString());
+
         model.gameOverProperty().addListener(this::handleGameOver);
         model.currentPlayerProperty().addListener(
                 (observableValue, oldPlayer, newPlayer) -> {
@@ -79,8 +80,8 @@ public class BoardGameController {
         );
         Logger.info("name = {}", name1);
         Logger.info("name = {}", name2);
-        playerName1.textProperty().bind(Bindings.concat("Hello, ", name1));
-        playerName2.textProperty().bind(Bindings.concat("Hello, ", name2));
+        playerName1.textProperty().bind(Bindings.concat(name1));
+        playerName2.textProperty().bind(Bindings.concat(name2));
     }
     public void setName1 (String name1){
             Logger.info("Setting Player 1 name to {}", name1);
@@ -88,7 +89,7 @@ public class BoardGameController {
         }
 
     public void setName2 (String name2){
-        Logger.info("Setting Player 1 name to {}", name2);
+        Logger.info("Setting Player 2 name to {}", name2);
         this.name2.set(name2);
     }
 
@@ -99,7 +100,6 @@ public class BoardGameController {
             gameOverAlert.setHeaderText("Game Over");
             gameOverAlert.setContentText("All coins are TAILS side facing up!");
             gameOverAlert.showAndWait();
-            Platform.exit();
         }
     }
 
@@ -108,14 +108,7 @@ public class BoardGameController {
         var square = new StackPane();
         square.getStyleClass().add("square");
         var piece = new Circle(20);
-/*
-        piece.fillProperty().bind(Bindings.when(model.squareProperty(i, j).isEqualTo(Square.NONE))
-        .then(Color.TRANSPARENT)
-        .otherwise(Bindings.when(model.squareProperty(i, j).isEqualTo(Square.HEAD))
-        .then(Color.RED)
-        .otherwise(Color.BLUE))
-        );
-*/
+
         piece.fillProperty().bind(
                 new ObjectBinding<Paint>() {
                     {
@@ -144,4 +137,6 @@ public class BoardGameController {
         model.move(row, col);
     }
 
+    public void handleTurn(ActionEvent actionEvent) {
+    }
 }
